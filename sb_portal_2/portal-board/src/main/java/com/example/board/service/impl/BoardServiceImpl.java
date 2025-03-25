@@ -4,7 +4,9 @@ import com.example.board.entity.Board;
 import com.example.board.repository.BoardRepository;
 import com.example.board.service.BoardService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,8 +38,8 @@ public class BoardServiceImpl implements BoardService {
         boardRepository.save(board);
     }
     @Override
-    public Page<Board> boardList(Pageable pageable) {
-        return boardRepository.findAll(pageable);
+    public Page<Board> boardList(int page) {
+        return boardRepository.findAllByOrderByIdDesc(PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "id")));
     }
 
 }

@@ -38,10 +38,25 @@
             </tbody>
           </table>
         </div>
-        <div style="text-align: center;">
-          <a th:if="${boards.hasPrevious()}" th:href="@{/board/list(page=${boards.number - 1})}">이전</a>
-          <span th:text="${boards.number + 1}"></span>
-          <a th:if="${boards.hasNext()}" th:href="@{/board/list(page=${boards.number + 1})}">다음</a>
+        <div class="p-3 border-top">
+          <nav th:if="${boards.totalPages > 1}" aria-label="Page navigation">
+            <ul class="pagination justify-content-center mb-0">
+              <li class="page-item" th:classappend="${boards.first} ? 'disabled'">
+                <a class="page-link" th:href="@{/board/list(page=${boards.number - 1})}" aria-label="Previous">
+                  <i class="fas fa-chevron-left"></i>
+                </a>
+              </li>
+              <li class="page-item" th:each="pageNum : ${#numbers.sequence(0, boards.totalPages - 1)}"
+                  th:classappend="${pageNum == boards.number} ? 'active'">
+                <a class="page-link" th:href="@{/board/list(page=${pageNum})}" th:text="${pageNum + 1}"></a>
+              </li>
+              <li class="page-item" th:classappend="${boards.last} ? 'disabled'">
+                <a class="page-link" th:href="@{/board/list(page=${boards.number + 1})}" aria-label="Next">
+                  <i class="fas fa-chevron-right"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>

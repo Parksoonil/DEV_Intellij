@@ -23,11 +23,9 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public String list(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        Page<Board> list = boardService.boardList(pageable);
-        model.addAttribute("boards", list);
-        model.addAttribute("currentPage", list.getNumber() + 1);
-        model.addAttribute("totalPages", list.getTotalPages());
+    public String list(@RequestParam(defaultValue = "0") int page, Model model) {
+        Page<Board> boards = boardService.boardList(page);
+        model.addAttribute("boards", boards);
         return "list";
     }
     @GetMapping("/{id}")

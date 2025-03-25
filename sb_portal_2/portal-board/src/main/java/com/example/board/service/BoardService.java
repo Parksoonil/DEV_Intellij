@@ -11,5 +11,5 @@ public interface BoardService {
     Board findById(Long id);
     void save(Board board);
     void deleteById(Long id);
-    Page<Board> boardList(Pageable pageable);
+    Page<Board> boardList(int page);
 }
