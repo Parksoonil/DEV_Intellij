@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+  <title>Write</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title h4 mb-0">글수정</h2>
+          </div>
+          <div class="card-body">
+            <form th:action="@{/board/edit}" method="post">
+              <input type="hidden" th:value="${board.id}" name="id"/>
+              <div class="mb-3">
+                <label for="title" class="form-label">제목</label>
+                <input type="text" class="form-control" id="title" name="title" th:value="${board.title}" required>
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">작성자</label>
+                <input type="text" class="form-control" id="name" name="name" th:value="${board.name}" required>
+              </div>
+              <div class="mb-3">
+                <label for="contents" class="form-label">내용</label>
+                <textarea class="form-control" id="contents" name="contents" th:value="${board.contents}" rows="10" required></textarea>
+              </div>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a th:href="@{/board}" class="btn btn-secondary me-2">취소</a>
+                <button type="submit" class="btn btn-primary">저장</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

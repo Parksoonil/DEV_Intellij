@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/portal-web" />
             <option value="$PROJECT_DIR$/sub-module-1" />
             <option value="$PROJECT_DIR$/sub-module-2" />
+            <option value="$PROJECT_DIR$/sub-module-3" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>EDIT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* 밝은 배경 */
+        }
+        .form-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+            padding: 30px;
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        .form-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #495057; /* 약간 어두운 텍스트 색상 */
+        }
+        .btn-custom {
+            background: linear-gradient(135deg, #6c63ff, #4a47a3);
+            color: white;
+            border: none;
+        }
+        .btn-custom:hover {
+            background: linear-gradient(135deg, #4a47a3, #6c63ff);
+        }
+        .btn-secondary-custom {
+            background-color: #ced4da; /* 회색 */
+            color: black;
+        }
+        .btn-secondary-custom:hover {
+            background-color: #adb5bd;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="form-container">
+        <h2 class="form-title text-center mb-4">비밀번호 변경</h2>
+
+        <form th:action="@{/account/changepassword}" method="post">
+            <input type="hidden" id="id" name="id" value="${account.id}" />
+            <div class="mb-3">
+                <label for="password" class="form-label">현재 비밀번호</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="mb-3">
+                <label for="newpassword" class="form-label">변경할 비밀번호</label>
+                <input type="password" class="form-control" id="newpassword" name="newpassword" required>
+            </div>
+            <div class="mt-4 text-center">
+                <button type="submit" class="btn btn-custom btn-lg">등록</button>
+                <a th:href="@{/}" class="btn btn-secondary-custom btn-lg ms-3">취소</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

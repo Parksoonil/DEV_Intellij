@@ -1,0 +1,5 @@
+rootProject.name = 'sb_portal_2'
+include 'portal-common'
+include 'portal-web'
+include 'portal-account'
+include 'portal-board'

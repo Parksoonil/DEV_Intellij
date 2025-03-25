@@ -19,7 +19,6 @@ public class MemberController {
     @GetMapping("/")
     public String index(Model model) {
         List<MemberDTO> members = memberService.getAllMembers();
-        model.addAttribute("members", members);
         model.addAttribute("memberDTO", new MemberDTO());
         return "index";
     }
